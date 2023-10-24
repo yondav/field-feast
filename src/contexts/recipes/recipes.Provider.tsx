@@ -1,4 +1,5 @@
-import { useReducer, useMemo, type ReactNode } from 'react';
+import { useReducer, useMemo, type ReactNode, useCallback, useEffect } from 'react';
+import { useSearchParams, type URLSearchParamsInit } from 'react-router-dom';
 
 import { Context, initialState } from './recipes.context';
 import { stateReducer, paramsReducer, listReducer } from './recipes.reducer';
@@ -9,6 +10,9 @@ import { ActionTypes, type ContextState, type DispatchActions } from './recipes.
  * @param children - React components to be wrapped by the provider.
  */
 export function Provider({ children }: { children: ReactNode }) {
+  // Access the current search parameters and a function to update them.
+  const [, setSearchParams] = useSearchParams();
+
   // Use reducers to manage different parts of the application state.
   const [params, paramsDispatch] = useReducer(paramsReducer, initialState.state.params);
   const [list, listDispatch] = useReducer(listReducer, initialState.state.list);
@@ -49,6 +53,17 @@ export function Provider({ children }: { children: ReactNode }) {
     }),
     [general, params, list, dispatch]
   );
+
+  // Define a callback function to update search parameters based on the current params.
+  const updateSearchParams = useCallback(() => {
+    // Set the search parameters to match the current params.
+    setSearchParams(params as URLSearchParamsInit);
+  }, [params, setSearchParams]);
+
+  // Automatically update search parameters when the params change.
+  useEffect(() => {
+    updateSearchParams();
+  }, [updateSearchParams]);
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
