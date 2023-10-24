@@ -1,4 +1,4 @@
-import type { Nullable, ValueOf } from '../../utils';
+import type { Nullable, NumericalString, ValueOf } from '../../utils';
 
 import type {
   cuisineTypes,
@@ -34,7 +34,7 @@ export type HealthLabelParam = ValueOf<typeof healthLabels>;
 export type ParamValue<T> = T | Array<T>;
 
 // Represents a query parameter that would accept a single number or a range.
-export type RangeValue = number | [number, number];
+export type RangeValue = NumericalString | [NumericalString, NumericalString];
 
 // Represents an object of query parameters.
 export type QueryParams = {
