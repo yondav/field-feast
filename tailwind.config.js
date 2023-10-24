@@ -1,0 +1,81 @@
+/** @type {import('tailwindcss').Config} */
+import defaultTheme from 'tailwindcss/defaultTheme';
+
+export const content = ['./src/**/*.{js,jsx,ts,tsx}'];
+export const theme = {
+  extend: {
+    colors: {
+      black: '#020303',
+      white: '#fcfcfc',
+      neutral: {
+        50: '#f8f8f8',
+        100: '#efefef',
+        200: '#dcdcdc',
+        300: '#bdbdbd',
+        400: '#989898',
+        500: '#7c7c7c',
+        600: '#656565',
+        700: '#525252',
+        800: '#464646',
+        900: '#3d3d3d',
+        950: '#292929',
+      },
+      'blood-orange': {
+        50: '#fdf6ef',
+        100: '#f9eadb',
+        200: '#f2d2b6',
+        300: '#eab387',
+        400: '#e18b56',
+        500: '#da6e35',
+        600: '#c35329',
+        700: '#a94325',
+        800: '#873625',
+        900: '#6d2f21',
+        950: '#3b160f',
+      },
+      grapefruit: {
+        50: '#fef2f2',
+        100: '#ffe1e1',
+        200: '#ffc9c8',
+        300: '#ff9b9a',
+        400: '#fd6d6c',
+        500: '#f5403e',
+        600: '#e22220',
+        700: '#be1917',
+        800: '#9d1817',
+        900: '#821b1a',
+        950: '#470908',
+      },
+      lemon: {
+        50: '#fef9ec',
+        100: '#fcf0c9',
+        200: '#f8de8f',
+        300: '#f4c54e',
+        400: '#f2b12d',
+        500: '#eb9115',
+        600: '#d06d0f',
+        700: '#ad4c10',
+        800: '#8c3b14',
+        900: '#733114',
+        950: '#421806',
+      },
+      lime: {
+        50: '#f8f8ed',
+        100: '#eeefd8',
+        200: '#dde1b5',
+        300: '#c1c97e',
+        400: '#aeb863',
+        500: '#919d45',
+        600: '#717c34',
+        700: '#57602b',
+        800: '#464d27',
+        900: '#3d4324',
+        950: '#1f2310',
+      },
+    },
+    fontFamily: {
+      brand: ['Amatic SC', ...defaultTheme.fontFamily.sans],
+    },
+  },
+};
+export const plugins = [];

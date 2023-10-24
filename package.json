@@ -10,23 +10,70 @@
     "@types/node": "^16.18.59",
     "@types/react": "^18.2.31",
     "@types/react-dom": "^18.2.14",
+    "axios": "^1.5.1",
+    "framer-motion": "^10.16.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
+    "react-router-dom": "^6.17.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.3",
+    "tailwindcss": "^3.3.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write .",
+    "lint": "eslint \"**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix",
+    "fix": "npm run lint:fix && npm run format",
+    "git:alias-commit": "git config alias.cz 'npx cz'",
+    "git:hookspath": "git config core.hooksPath .githooks",
+    "preinstall": "npm run git:hookspath && npm run git:alias-commit"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
+      "react-app/jest",
+      "prettier"
+    ],
+    "rules": {
+      "no-console": 1,
+      "@typescript-eslint/consistent-type-imports": "error",
+      "import/order": [
+        "error",
+        {
+          "alphabetize": {
+            "order": "asc"
+          },
+          "groups": [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index"
+          ],
+          "newlines-between": "always",
+          "warnOnUnassignedImports": true
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
